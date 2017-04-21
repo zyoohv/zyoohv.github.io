@@ -123,6 +123,4 @@ main()
 
 Result:
 
-{{site.postsurl}}
-
 ![yy love]({{ site.postsurl }}image/20170421.png)
