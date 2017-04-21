@@ -9,7 +9,7 @@ In this task, we want to use one `LSTM` cell to polyfit `xsin(x)` function.
 
 code here:
 
-```Python
+{% highlight Python %}
 '''
 task : build minimum lstm prediction network
 author : zyoohv@gmail.com
@@ -119,8 +119,10 @@ def main():
 
 main()
 
-```
+{% endhighlight %}
 
 Result:
 
-![yy love](image/20170421.png)
+{{site.postsurl}}
+
+![yy love]({{ site.postsurl }}image/20170421.png)
