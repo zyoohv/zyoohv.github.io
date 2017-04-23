@@ -1,2 +1,3 @@
 # zyoohv.github.io
-Blog
+
+Visit it from [http://zyoohv.github.io/](http://zyoohv.github.io/)

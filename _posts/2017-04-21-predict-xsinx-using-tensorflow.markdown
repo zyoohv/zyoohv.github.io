@@ -123,4 +123,4 @@ main()
 
 Result:
 
-![yy love]({{ site.postsurl }}image/20170421.png)
+![yy love]({{ site.url }}/_posts/image/20170421.png)
