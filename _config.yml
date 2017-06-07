@@ -9,10 +9,11 @@ description: >
 # Your information
 email: zyoohv@163.com
 author: zyoohv
-avatar: ""
+avatar: "/image/avatar.jpg"
 profile: work for fun, live for love.
-#twitter_username: twitter_username
-#github_username:  github_username
+
+twitter_username: zyoohv
+github_username:  zyoohv
 
 # Comment Service (Disqus or 多说)
 #  choose one and un-comment the line to active it
