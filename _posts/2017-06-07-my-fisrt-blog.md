@@ -1,12 +1,16 @@
 ---
 layout: post
-title:  "my first blog"
+title:  "New blog"
 date:   2017-06-07 00:00
 categories: Normal
 permalink: /archivers/first-day
 ---
 
-This is my new blog. I'm very happy to share my knowledge here. I love something which is small and clever, and also make something just like them. It's really a novel way to exhibit interesting areas which I familiar with. If you think it's really useful, do not forget star my [Github](https://github.com/zyoohv)
+![](/image/first.jpg)
+
+This is my new blog. I'm very happy to share my knowledge here. I love something which is small and clever, and also make something just like them. It's really a novel way to exhibit interesting areas which I familiar with. If you think it's really useful, do not forget star my **Github**.
+
+<!--more-->
 
 ## abstract
 

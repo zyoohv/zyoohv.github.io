@@ -20,6 +20,8 @@ github_username:  zyoohv
 #disqus_shortname: xxx   # get one: https://disqus.com/admin/signup/
 #duoshuo_shortname: xxx  # get one: http://duoshuo.com/create-site/
 
+excerpt_separator: <!--more-->
+
 permalink: /archivers/:title
 gems:
  - jekyll-paginate
