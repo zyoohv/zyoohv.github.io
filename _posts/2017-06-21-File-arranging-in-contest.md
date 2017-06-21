@@ -71,7 +71,7 @@ def train_split(days=7):
     # do some operation
 
 def load_full():
-  # do some operation
+    # do some operation
 ```
 
 So next time when you need change algorithms or fix bug about this package, you don't need edit code's which calls this interface.
