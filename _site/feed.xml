@@ -6,57 +6,23 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 21 Jun 2017 04:31:40 -0400</pubDate>
-    <lastBuildDate>Wed, 21 Jun 2017 04:31:40 -0400</lastBuildDate>
+    <pubDate>Wed, 21 Jun 2017 04:45:38 -0400</pubDate>
+    <lastBuildDate>Wed, 21 Jun 2017 04:45:38 -0400</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
-        <title>New blog</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/image/first.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+        <title>File Arranging in Machine-Learning Contest</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/image/06-21.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;This is my new blog. I’m very happy to share my knowledge here. I love something which is small and clever, and also make something just like them. It’s really a novel way to exhibit interesting areas which I familiar with. If you think it’s really useful, do not forget star my &lt;strong&gt;Github&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;When we take part in machine learning contest, how to arrange ours files always be a difficult problem. For example, how to make it easy to append new model? how to make it easy to change the algorithms we used? how to make it more quick? also, how to make ours code brief?&lt;/p&gt;
 
 &lt;!--more--&gt;
 
-&lt;h2 id=&quot;abstract&quot;&gt;abstract&lt;/h2&gt;
-
-&lt;p&gt;I will public following categories blogs:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;neural network&lt;/li&gt;
-  &lt;li&gt;data Mining&lt;/li&gt;
-  &lt;li&gt;math&lt;/li&gt;
-  &lt;li&gt;others :-)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;about&quot;&gt;about&lt;/h2&gt;
-
-&lt;p&gt;I am a &lt;em&gt;master candidate&lt;/em&gt; in &lt;em&gt;University Of Electronic Science And Technology Of China&lt;/em&gt;. My researching area is &lt;em&gt;computer Vision&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;If you have any question, just email me : &lt;strong&gt;zyoohv@163.com&lt;/strong&gt;.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 07 Jun 2017 00:00:00 -0400</pubDate>
-        <link>http://localhost:4000/archivers/first-day</link>
-        <guid isPermaLink="true">http://localhost:4000/archivers/first-day</guid>
-        
-        
-        <category>Normal</category>
-        
-      </item>
-    
-      <item>
-        <title>File Arrange in Machine-Learning Contest</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/image/0621.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;When we take part in machine learning contest, how to arranging ours files always be a difficult problem. For example, how to make it easy to append new model? how to make it easy to change the algorithms we used? how to make it more quick? also, how to make ours code brief?&lt;/p&gt;
-
-&lt;p&gt;It’s obvious that a good structure will reduce our trouble when we need change our methods. And of course, it’s inevitable for us to change our methods such as parameters, algorithms and so on. If you have a flexible file arranging strategy, you will find it’s really easy to optimize all of them.&lt;/p&gt;
-
-&lt;!-- more --&gt;
+&lt;p&gt;It’s obvious that a good structure will reduce our trouble when we need changing our methods. And of course, it’s inevitable for us to change our methods such as parameters, algorithms and so on. If you have a flexible strategy, you will find it’s really easy to optimize them.&lt;/p&gt;
 
 &lt;h2 id=&quot;basic-principle&quot;&gt;basic principle&lt;/h2&gt;
 
-&lt;p&gt;There are some basic principles we need to obey. When we look up some great project, we usually can find them in their projects. But from today, we will get the explanation that why they arrange files in that style.&lt;/p&gt;
+&lt;p&gt;There are some basic principles we need to obey. When we look up some great project, we usually can find them in their projects. But today, we will get the explanation that why they arrange files in that style.&lt;/p&gt;
 
 &lt;h3 id=&quot;1-readmemd&quot;&gt;1. README.md&lt;/h3&gt;
 
@@ -82,7 +48,7 @@
 
 &lt;h3 id=&quot;3-split-training-and-prediction-codes&quot;&gt;3. split training and prediction codes&lt;/h3&gt;
 
-&lt;p&gt;We all know that reducing interconnection of the code is the core thinking of object oriented programing. It suit this condition especially. Generally speaking, we usually do cross-validation or training many times, and predict the result or make decision only after we get a good enough model with good parameters. If we put these code together, we will do many redundant job and waste much time of us and computers.&lt;/p&gt;
+&lt;p&gt;We all know that reducing interconnection of the code is the core thinking of object oriented programing, and it especially suits this condition. Generally speaking, we usually do cross-validation or training operation many times, and predict the result or make decision only after we get a good enough model with good parameters. If we put these code together, we will do many redundant job and waste much time both of us and computers.&lt;/p&gt;
 
 &lt;p&gt;For example, if you are using python, there would be two entry points to your code:&lt;/p&gt;
 
@@ -122,28 +88,62 @@ support interface:
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;So next time when you need change algorithms or fix bug about this package, you don’t need edit code’s which calls it’s interface.&lt;/p&gt;
+&lt;p&gt;So next time when you need change algorithms or fix bug about this package, you don’t need edit code’s which calls this interface.&lt;/p&gt;
 
 &lt;h3 id=&quot;5-learning-more-reading-more&quot;&gt;5. learning more, reading more&lt;/h3&gt;
 
-&lt;p&gt;A good Design-Patterns can make your code more flexible and more safe, the meaning of safe may be less bugs. Thinking more and practice them, your code must be better and better.&lt;/p&gt;
+&lt;p&gt;A good Design-Patterns can make your code more flexible and more safe, the meaning of safe may be less bugs. Thinking more and practice more, your code must be better and better.&lt;/p&gt;
 
 &lt;p&gt;At the same time, don’t forget reading more code from &lt;strong&gt;Github&lt;/strong&gt; or some awesome guys’ blog, many skills which they show will benefit us too.&lt;/p&gt;
 
 &lt;h2 id=&quot;powerful-model&quot;&gt;powerful model&lt;/h2&gt;
 
-&lt;p&gt;Generally speaking, we’d better use packages instead of our own methods, especially when they finish same tasks. Powerful packages, can help us save both time and energy.&lt;/p&gt;
+&lt;p&gt;Generally speaking, we’d better use packages instead of our own methods, especially when they finish same tasks. Powerful packages can help us save both time and energy, Although sometimes they are really slow. :)&lt;/p&gt;
 
 &lt;h2 id=&quot;reference&quot;&gt;reference&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://www.kaggle.com/wiki/ModelSubmissionBestPractices&quot;&gt;https://www.kaggle.com/wiki/ModelSubmissionBestPractices&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>Tue, 30 Dec 2014 04:00:13 -0500</pubDate>
-        <link>http://localhost:4000/archivers/hello</link>
-        <guid isPermaLink="true">http://localhost:4000/archivers/hello</guid>
+        <pubDate>Wed, 21 Jun 2017 04:00:00 -0400</pubDate>
+        <link>http://localhost:4000/archivers/ML</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/ML</guid>
         
         
         <category>ML</category>
+        
+      </item>
+    
+      <item>
+        <title>New blog</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/image/first.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is my new blog. I’m very happy to share my knowledge here. I love something which is small and clever, and also make something just like them. It’s really a novel way to exhibit interesting areas which I familiar with. If you think it’s really useful, do not forget star my &lt;strong&gt;Github&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;abstract&quot;&gt;abstract&lt;/h2&gt;
+
+&lt;p&gt;I will public following categories blogs:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;neural network&lt;/li&gt;
+  &lt;li&gt;data Mining&lt;/li&gt;
+  &lt;li&gt;math&lt;/li&gt;
+  &lt;li&gt;others :-)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;about&quot;&gt;about&lt;/h2&gt;
+
+&lt;p&gt;I am a &lt;em&gt;master candidate&lt;/em&gt; in &lt;em&gt;University Of Electronic Science And Technology Of China&lt;/em&gt;. My researching area is &lt;em&gt;computer Vision&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you have any question, just email me : &lt;strong&gt;zyoohv@163.com&lt;/strong&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 07 Jun 2017 08:00:00 -0400</pubDate>
+        <link>http://localhost:4000/archivers/first-day</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/first-day</guid>
+        
+        
+        <category>Normal</category>
         
       </item>
     
