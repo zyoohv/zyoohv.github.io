@@ -6,8 +6,8 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 07 Jun 2017 05:16:33 -0400</pubDate>
-    <lastBuildDate>Wed, 07 Jun 2017 05:16:33 -0400</lastBuildDate>
+    <pubDate>Wed, 21 Jun 2017 04:31:40 -0400</pubDate>
+    <lastBuildDate>Wed, 21 Jun 2017 04:31:40 -0400</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -41,6 +41,109 @@
         
         
         <category>Normal</category>
+        
+      </item>
+    
+      <item>
+        <title>File Arrange in Machine-Learning Contest</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/image/0621.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When we take part in machine learning contest, how to arranging ours files always be a difficult problem. For example, how to make it easy to append new model? how to make it easy to change the algorithms we used? how to make it more quick? also, how to make ours code brief?&lt;/p&gt;
+
+&lt;p&gt;It’s obvious that a good structure will reduce our trouble when we need change our methods. And of course, it’s inevitable for us to change our methods such as parameters, algorithms and so on. If you have a flexible file arranging strategy, you will find it’s really easy to optimize all of them.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&quot;basic-principle&quot;&gt;basic principle&lt;/h2&gt;
+
+&lt;p&gt;There are some basic principles we need to obey. When we look up some great project, we usually can find them in their projects. But from today, we will get the explanation that why they arrange files in that style.&lt;/p&gt;
+
+&lt;h3 id=&quot;1-readmemd&quot;&gt;1. README.md&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;README.md file should at the top level of the archive.&lt;/strong&gt; If someone runs your code or view the information of your project, the first place they go should be your REAME file. What’s more, it always be the only place where they can learn from. A good README file should include follows:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The hardware / OS platform you used&lt;/li&gt;
+  &lt;li&gt;Any necessary 3rd-party software (+ installation steps)&lt;/li&gt;
+  &lt;li&gt;How to train your model&lt;/li&gt;
+  &lt;li&gt;How to make predictions on a new test set.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;If you add your mail address or something like it, it will gets better.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-settingjson&quot;&gt;2. setting.json&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;The setting.json file should at the top of the archive.&lt;/strong&gt; This file specifies the path to the train, test, model, and output directories. Further more, you’d better put all configure path into this file. Next time we want to specify ourselves file, we can just edit it. It should including:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;This is the &lt;strong&gt;only place&lt;/strong&gt; that specifies the path to these directories.&lt;/li&gt;
+  &lt;li&gt;Any code that is doing I/O should use the appropriate base paths from setting.json&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;3-split-training-and-prediction-codes&quot;&gt;3. split training and prediction codes&lt;/h3&gt;
+
+&lt;p&gt;We all know that reducing interconnection of the code is the core thinking of object oriented programing. It suit this condition especially. Generally speaking, we usually do cross-validation or training many times, and predict the result or make decision only after we get a good enough model with good parameters. If we put these code together, we will do many redundant job and waste much time of us and computers.&lt;/p&gt;
+
+&lt;p&gt;For example, if you are using python, there would be two entry points to your code:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;train.py&lt;/em&gt;, which would&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Read training data from TRAIN_DATA_PATH (specified in setting.json)&lt;/li&gt;
+  &lt;li&gt;Train your model&lt;/li&gt;
+  &lt;li&gt;Save your model to MODEL_PATH (specified in setting.json)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;predict.py&lt;/em&gt;, which would&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Read test data from TEST_DATA_PATH (specified in setting.json)&lt;/li&gt;
+  &lt;li&gt;Load your model from MODEL_PATH (specified in setting.json)&lt;/li&gt;
+  &lt;li&gt;Use your model to make predictions on new samples&lt;/li&gt;
+  &lt;li&gt;Save your predictions to SUBMISSION_PATH (specified in setting.json)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;4-build-your-own-package&quot;&gt;4. build your own package&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;build your own package is another way to reduce interconnection of your code.&lt;/strong&gt; For example, we can make file &lt;code class=&quot;highlighter-rouge&quot;&gt;abstract_feature&lt;/code&gt; and make it be a new package made by us. And thus, when we need update our methods, we just edit it or establish new file in it. &lt;strong&gt;An important idea of package is to decide a good interface&lt;/strong&gt;, just like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;'''abstract_feature package
+
+support interface:
+
+- train_split(days=7): dtrain, dlabel: type=dataframe
+- load_full(): dtrain: type=dataframe
+'''&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;train_split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;days&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# do some operation&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;load_full&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+  &lt;span class=&quot;c&quot;&gt;# do some operation&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;So next time when you need change algorithms or fix bug about this package, you don’t need edit code’s which calls it’s interface.&lt;/p&gt;
+
+&lt;h3 id=&quot;5-learning-more-reading-more&quot;&gt;5. learning more, reading more&lt;/h3&gt;
+
+&lt;p&gt;A good Design-Patterns can make your code more flexible and more safe, the meaning of safe may be less bugs. Thinking more and practice them, your code must be better and better.&lt;/p&gt;
+
+&lt;p&gt;At the same time, don’t forget reading more code from &lt;strong&gt;Github&lt;/strong&gt; or some awesome guys’ blog, many skills which they show will benefit us too.&lt;/p&gt;
+
+&lt;h2 id=&quot;powerful-model&quot;&gt;powerful model&lt;/h2&gt;
+
+&lt;p&gt;Generally speaking, we’d better use packages instead of our own methods, especially when they finish same tasks. Powerful packages, can help us save both time and energy.&lt;/p&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;reference&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.kaggle.com/wiki/ModelSubmissionBestPractices&quot;&gt;https://www.kaggle.com/wiki/ModelSubmissionBestPractices&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 30 Dec 2014 04:00:13 -0500</pubDate>
+        <link>http://localhost:4000/archivers/hello</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/hello</guid>
+        
+        
+        <category>ML</category>
         
       </item>
     

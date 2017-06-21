@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "New blog"
-date:   2017-06-07 00:00
+date:   2017-06-07 08:00
 categories: Normal
 permalink: /archivers/first-day
 ---

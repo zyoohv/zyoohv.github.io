@@ -13,6 +13,12 @@
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://localhost:4000/about/">
   <link rel="alternate" type="application/rss+xml" title="Yoohv's Blog" href="http://localhost:4000/feed.xml" />
+<!-- mathjax -->
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
 </head>
 
 
@@ -74,7 +80,7 @@
     <a href="https://github.com/zyoohv">GitHub</a>
     
     
-    <a href="https://twitter.com/zyoohv">Twitter</a>
+    <a href="https://twitter.com/Zo Yoohv">Twitter</a>
     
     
     <a href="mailto:zyoohv@163.com">Email</a>
@@ -87,6 +93,8 @@
   <ul class="post-list">
     
       <li><a class="post-link" href="/archivers/first-day">New blog</a></li>
+    
+      <li><a class="post-link" href="/archivers/hello">File Arrange in Machine-Learning Contest</a></li>
     
   </ul>
 </div>
@@ -105,6 +113,20 @@
 </footer>
 
 <script src="/js/easybook.js"></script>
+
+
+<!-- mathjax -->
+<script>
+  $("script[type='math/tex']").replaceWith(function() {
+      var tex = $(this).text();
+      return katex.renderToString(tex, {displayMode: false});
+  });
+
+  $("script[type='math/tex; mode=display']").replaceWith(function() {
+      var tex = $(this).html();
+      return katex.renderToString(tex.replace(/%.*/g, ''), {displayMode: true});
+  });
+</script>
 
 
   </body>

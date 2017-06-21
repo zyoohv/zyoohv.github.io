@@ -13,6 +13,12 @@
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://localhost:4000/">
   <link rel="alternate" type="application/rss+xml" title="Yoohv's Blog" href="http://localhost:4000/feed.xml" />
+<!-- mathjax -->
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
 </head>
 
 
@@ -71,6 +77,112 @@
         </div>
       </li>
     
+      <li>
+        <h2>
+          <a class="post-link" href="/archivers/hello">File Arrange in Machine-Learning Contest</a>
+        </h2>
+        
+        <div class="post-meta">Dec 30, 2014</div>
+
+        <div class="post-excerpt">
+          <p><img src="/image/0621.jpg" alt="" /></p>
+
+<p>When we take part in machine learning contest, how to arranging ours files always be a difficult problem. For example, how to make it easy to append new model? how to make it easy to change the algorithms we used? how to make it more quick? also, how to make ours code brief?</p>
+
+<p>It’s obvious that a good structure will reduce our trouble when we need change our methods. And of course, it’s inevitable for us to change our methods such as parameters, algorithms and so on. If you have a flexible file arranging strategy, you will find it’s really easy to optimize all of them.</p>
+
+<!-- more -->
+
+<h2 id="basic-principle">basic principle</h2>
+
+<p>There are some basic principles we need to obey. When we look up some great project, we usually can find them in their projects. But from today, we will get the explanation that why they arrange files in that style.</p>
+
+<h3 id="1-readmemd">1. README.md</h3>
+
+<p><strong>README.md file should at the top level of the archive.</strong> If someone runs your code or view the information of your project, the first place they go should be your REAME file. What’s more, it always be the only place where they can learn from. A good README file should include follows:</p>
+
+<ol>
+  <li>The hardware / OS platform you used</li>
+  <li>Any necessary 3rd-party software (+ installation steps)</li>
+  <li>How to train your model</li>
+  <li>How to make predictions on a new test set.</li>
+</ol>
+
+<p>If you add your mail address or something like it, it will gets better.</p>
+
+<h3 id="2-settingjson">2. setting.json</h3>
+
+<p><strong>The setting.json file should at the top of the archive.</strong> This file specifies the path to the train, test, model, and output directories. Further more, you’d better put all configure path into this file. Next time we want to specify ourselves file, we can just edit it. It should including:</p>
+
+<ol>
+  <li>This is the <strong>only place</strong> that specifies the path to these directories.</li>
+  <li>Any code that is doing I/O should use the appropriate base paths from setting.json</li>
+</ol>
+
+<h3 id="3-split-training-and-prediction-codes">3. split training and prediction codes</h3>
+
+<p>We all know that reducing interconnection of the code is the core thinking of object oriented programing. It suit this condition especially. Generally speaking, we usually do cross-validation or training many times, and predict the result or make decision only after we get a good enough model with good parameters. If we put these code together, we will do many redundant job and waste much time of us and computers.</p>
+
+<p>For example, if you are using python, there would be two entry points to your code:</p>
+
+<p><em>train.py</em>, which would</p>
+<ol>
+  <li>Read training data from TRAIN_DATA_PATH (specified in setting.json)</li>
+  <li>Train your model</li>
+  <li>Save your model to MODEL_PATH (specified in setting.json)</li>
+</ol>
+
+<p><em>predict.py</em>, which would</p>
+<ol>
+  <li>Read test data from TEST_DATA_PATH (specified in setting.json)</li>
+  <li>Load your model from MODEL_PATH (specified in setting.json)</li>
+  <li>Use your model to make predictions on new samples</li>
+  <li>Save your predictions to SUBMISSION_PATH (specified in setting.json)</li>
+</ol>
+
+<h3 id="4-build-your-own-package">4. build your own package</h3>
+
+<p><strong>build your own package is another way to reduce interconnection of your code.</strong> For example, we can make file <code class="highlighter-rouge">abstract_feature</code> and make it be a new package made by us. And thus, when we need update our methods, we just edit it or establish new file in it. <strong>An important idea of package is to decide a good interface</strong>, just like this:</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="s">'''abstract_feature package
+
+support interface:
+
+- train_split(days=7): dtrain, dlabel: type=dataframe
+- load_full(): dtrain: type=dataframe
+'''</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">train_split</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">7</span><span class="p">):</span>
+    <span class="c"># do some operation</span>
+
+<span class="k">def</span> <span class="nf">load_full</span><span class="p">():</span>
+  <span class="c"># do some operation</span>
+</code></pre>
+</div>
+
+<p>So next time when you need change algorithms or fix bug about this package, you don’t need edit code’s which calls it’s interface.</p>
+
+<h3 id="5-learning-more-reading-more">5. learning more, reading more</h3>
+
+<p>A good Design-Patterns can make your code more flexible and more safe, the meaning of safe may be less bugs. Thinking more and practice them, your code must be better and better.</p>
+
+<p>At the same time, don’t forget reading more code from <strong>Github</strong> or some awesome guys’ blog, many skills which they show will benefit us too.</p>
+
+<h2 id="powerful-model">powerful model</h2>
+
+<p>Generally speaking, we’d better use packages instead of our own methods, especially when they finish same tasks. Powerful packages, can help us save both time and energy.</p>
+
+<h2 id="reference">reference</h2>
+
+<p><a href="https://www.kaggle.com/wiki/ModelSubmissionBestPractices">https://www.kaggle.com/wiki/ModelSubmissionBestPractices</a></p>
+
+          <p>
+            <a class="post-link" href="/archivers/hello">Read More &raquo;</a>
+          </p>
+        </div>
+      </li>
+    
   </ul>
   
   <!-- Pagination links -->
@@ -97,7 +209,7 @@
     <a href="https://github.com/zyoohv">GitHub</a>
     
     
-    <a href="https://twitter.com/zyoohv">Twitter</a>
+    <a href="https://twitter.com/Zo Yoohv">Twitter</a>
     
     
     <a href="mailto:zyoohv@163.com">Email</a>
@@ -110,6 +222,8 @@
   <ul class="post-list">
     
       <li><a class="post-link" href="/archivers/first-day">New blog</a></li>
+    
+      <li><a class="post-link" href="/archivers/hello">File Arrange in Machine-Learning Contest</a></li>
     
   </ul>
 </div>
@@ -128,6 +242,20 @@
 </footer>
 
 <script src="/js/easybook.js"></script>
+
+
+<!-- mathjax -->
+<script>
+  $("script[type='math/tex']").replaceWith(function() {
+      var tex = $(this).text();
+      return katex.renderToString(tex, {displayMode: false});
+  });
+
+  $("script[type='math/tex; mode=display']").replaceWith(function() {
+      var tex = $(this).html();
+      return katex.renderToString(tex.replace(/%.*/g, ''), {displayMode: true});
+  });
+</script>
 
 
   </body>
