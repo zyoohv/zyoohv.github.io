@@ -3,7 +3,7 @@ layout: post
 title:  "New blog"
 date:   2017-06-07 08:00
 categories: Normal
-permalink: /archivers/first-day
+permalink: /archivers/Normal
 ---
 
 ![](/image/first.jpg)

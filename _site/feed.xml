@@ -6,9 +6,193 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 21 Jun 2017 04:45:38 -0400</pubDate>
-    <lastBuildDate>Wed, 21 Jun 2017 04:45:38 -0400</lastBuildDate>
+    <pubDate>Thu, 20 Jul 2017 01:34:11 -0400</pubDate>
+    <lastBuildDate>Thu, 20 Jul 2017 01:34:11 -0400</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>Contest with vip.com</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/image/contest.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Vip.com&lt;/strong&gt;’s development is so rapidly today. It accumulates many users and goods data. How to predict the needs of customers with these data is one challenging task, and it is the center of practice of big data of &lt;strong&gt;Electronic Business&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Our task is predict the probability of buying special good in further one week.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;edaexploratory-data-analysis&quot;&gt;EDA(Exploratory Data Analysis)&lt;/h2&gt;
+
+&lt;p&gt;Firstly, we explore the distribution of operation(click/buy).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/image/wphui_1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;It seems that there are something unusual in 27 January, so we dropout the days before 18 Febrary.&lt;/strong&gt; At the same time, we can obtain that customs usually click more times than buying :).&lt;/p&gt;
+
+&lt;p&gt;So we gather more information of customs and items.&lt;/p&gt;
+
+&lt;p&gt;user_buy vs user_click:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/image/wphui_2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;item_buy vs item_click:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/image/wphui_3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In principle, we think the user who buys or clicks too many times are unusual, they will influnce our model’s currency. We drop user or item with following rule:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{click}{a} + \frac{buy}{b} \leq 1&lt;/script&gt;
+
+&lt;p&gt;For user, we select (a=6000, b=150), and (a=5000, b=300) for item.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;But until now, we still can’t obtain much information of the datas.&lt;/strong&gt; We should observe them in more points of view. At the same time, the result of operation above seems not obviously. For example, one may buy something in 1 January, but we may lost this information because our droping days before 18 February.&lt;/p&gt;
+
+&lt;h2 id=&quot;split-datasets&quot;&gt;Split Datasets&lt;/h2&gt;
+
+&lt;p&gt;At begining, we select all days but the last 7 to establish feature, and extract label from the last 7 days. We obtain online error with &lt;strong&gt;0.41458&lt;/strong&gt;, the best one until now. The advantage of this method is comprehensive feature data, but at the same time, the number of train data are more less.&lt;/p&gt;
+
+&lt;p&gt;Than we try split datasets in [feature1=(1-1, 1-30), label1=(2-1, 2-7)] and [feature2=(2-1, 2-28), label2=(3-1, 3-7)]. one of them is sended to train and the other one to valid our method. We score &lt;strong&gt;0.42056&lt;/strong&gt; in this method, worse than the initially method.&lt;/p&gt;
+
+&lt;p&gt;Than we observe &lt;em&gt;fig-1&lt;/em&gt;, we split in [feature1=(2-18, 3-18), label1=(3-19, 3-25)] and [feature2=(2-24, 3-24), label2=(3-25, 3-31)]. We are still truning our parameters and trying to select more useful feature now.&lt;/p&gt;
+
+&lt;h2 id=&quot;feature-engineering&quot;&gt;Feature Engineering&lt;/h2&gt;
+
+&lt;p&gt;We list some useful features here:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;id&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;feature_name&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;note&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;user_click_sum&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;user_buy_sum&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;user_last_buy_to_today&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;user_last_click_to_today&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;item_click_sum&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;item_buy_sum&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;brand_click_sum&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;brand_buy_sum&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;user_click_timewindows&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;list&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;item_click_timewondows&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;list&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;brand_click_timewindows&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;list&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;…&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;others&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;model-selection&quot;&gt;Model Selection&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;gbdt&lt;/strong&gt;: We select &lt;strong&gt;Microsoft’s lightgbm&lt;/strong&gt; to implement this algorithm, clicking here to get &lt;a href=&quot;https://github.com/Microsoft/LightGBM&quot;&gt;more information&lt;/a&gt; about it.&lt;br /&gt;
+&lt;strong&gt;SVM&lt;/strong&gt;: We try svc but it seems doesn’t work. The best one score about &lt;strong&gt;0.67&lt;/strong&gt;.&lt;br /&gt;
+&lt;strong&gt;KNN&lt;/strong&gt;: We use features which are same as used in gbdt, but we just score &lt;strong&gt;0.53&lt;/strong&gt; with this method.&lt;/p&gt;
+
+&lt;h2 id=&quot;truning-parameters&quot;&gt;Truning Parameters&lt;/h2&gt;
+
+&lt;p&gt;Turning parameters make our model get a better grade offline. But when submiting result of our prediction, it seems doesn’t work to us. Until now, we even don’t know how many &lt;strong&gt;num_leaves&lt;/strong&gt; should we set.&lt;/p&gt;
+
+&lt;p&gt;In fact, we had attempted to turning parameter. It increase our score from &lt;strong&gt;0.43&lt;/strong&gt; to &lt;strong&gt;0.41&lt;/strong&gt; offline. But obviously, it doesn’t help us get a better grade when submiting.&lt;/p&gt;
+
+&lt;h2 id=&quot;about-others&quot;&gt;About Others&lt;/h2&gt;
+
+&lt;h3 id=&quot;project-arrange&quot;&gt;Project Arrange&lt;/h3&gt;
+
+&lt;p&gt;I spend about a week to explore and rebuild our working project files, and the result show that it deserves. A good strategy should guarantees:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;speed of runing.&lt;/strong&gt; Spliting your project into some submodels is not a bad idea. For example, you can just run &lt;strong&gt;preparedata.py&lt;/strong&gt; to extract feature from origin dataset and store them in specify files, and build your &lt;strong&gt;train.py&lt;/strong&gt; or &lt;strong&gt;predict.py&lt;/strong&gt; just like it. If you just want to add or drop one feature, you may need a new strategy to arrange your file but not abstracting from begining again and agian. What’s more, we need view the importance of our features, so you’d better named your columns with &lt;strong&gt;pandas DataFrame&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;expanding.&lt;/strong&gt; Support that we need add a new algorithm to our project, we can just add one file named such as &lt;strong&gt;svm.py&lt;/strong&gt; under our folder &lt;strong&gt;predict_algorithms&lt;/strong&gt; if we arrange our project carefully. In fact, it has another name &lt;strong&gt;Design Pattern&lt;/strong&gt; and common used in OOP.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;pipline.&lt;/strong&gt; It’s a concept in &lt;strong&gt;sklearn&lt;/strong&gt;, more information click &lt;strong&gt;&lt;a href=&quot;http://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html&quot;&gt;here&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;person&quot;&gt;Person&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;You have an idea, I have an idea, and exchange each other, there are two or more than two ideas.&lt;/strong&gt; What’s more, how to arange your time still take an important part. In this contest, I cost much time to extract features and split dataset again and again even in the last several days. &lt;strong&gt;You need make a timetable to decide what to do in specify time.&lt;/strong&gt; for example, your can split your work flow to &lt;strong&gt;explority data analysis, feature engineering, parameter turning, esemble models.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;log&quot;&gt;Log&lt;/h3&gt;
+
+&lt;p&gt;The chances of submiting are limited. log your submiting file and named them with date or other importance information can help you estimate if you will get a better grade this time. Or if you has some history file which get good grade, esembling them may surprised you.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;As we all know, the ways to improve our grades are just following:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;collect more datas to train, or make your datas more easy to learn.&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;select more powerful models&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;trun your paramenters&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Ensemble&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The effect of them are decreasing by index. But it just likes cannikin law, you must ensure everyone of them is good enough.&lt;/p&gt;
+
+&lt;p&gt;And another import thing is that choose some reliable teammates. &lt;strong&gt;If you can’t cooperate with each other, just do it by yourself.&lt;/strong&gt; In common, as a member of a good group, one must:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;spend time to do it&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;provide idea or do something they can, even just turn parameters&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;always exchange idea with other group members&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;It’s really upset that my friend do none of above :(.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 06 Jul 2017 08:00:00 -0400</pubDate>
+        <link>http://localhost:4000/archivers/Contest</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/Contest</guid>
+        
+        
+        <category>Contest</category>
+        
+      </item>
     
       <item>
         <title>File Arranging in Machine-Learning Contest</title>
@@ -84,7 +268,7 @@ support interface:
     &lt;span class=&quot;c&quot;&gt;# do some operation&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;load_full&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-  &lt;span class=&quot;c&quot;&gt;# do some operation&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# do some operation&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -139,8 +323,8 @@ support interface:
 &lt;p&gt;If you have any question, just email me : &lt;strong&gt;zyoohv@163.com&lt;/strong&gt;.&lt;/p&gt;
 </description>
         <pubDate>Wed, 07 Jun 2017 08:00:00 -0400</pubDate>
-        <link>http://localhost:4000/archivers/first-day</link>
-        <guid isPermaLink="true">http://localhost:4000/archivers/first-day</guid>
+        <link>http://localhost:4000/archivers/Normal</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/Normal</guid>
         
         
         <category>Normal</category>
