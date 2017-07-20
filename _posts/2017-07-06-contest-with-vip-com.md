@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Contest with vip.com"
+title:  "Contest About vip.com"
 date:   2017-07-06 08:00
 categories: Contest
 permalink: /archivers/Contest
