@@ -10,7 +10,7 @@ permalink: /archivers/youngers
 
 I'm 22 years old now, and study in **University of Electronic Science and Technology of China.** The four years I spended in there are so boring and upseting, so it's time to rebuild my life and enjoy the further three years.
 
-The reason why I write this blog is mainly for my lover **yy**, she is so beatiful and lovely but I am so sorry to make her feeling yawnful because of my boring life. I love her, just like I will review this blog again and again in the future.
+The reason why I write this blog is mainly for my lover **yy**, she is so beatiful and lovely but I am so sorry to make her feeling yawnful because of my boring life. I love her, and I will review this blog again and again in the future.
 
 <!--more-->
 
