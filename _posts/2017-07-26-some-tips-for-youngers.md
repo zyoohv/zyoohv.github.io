@@ -6,7 +6,7 @@ categories: Normal
 permalink: /archivers/youngers
 ---
 
-![](/image/newlife.png)
+![](/image/newlife.jpg)
 
 I'm 22 years old now, and study in **University of Electronic Science and Technology of China.** The four years I spended in there are so boring and upseting, so it's time to rebuild my life and enjoy the further three years.
 
