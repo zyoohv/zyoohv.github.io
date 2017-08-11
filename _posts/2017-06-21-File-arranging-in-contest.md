@@ -3,7 +3,7 @@ layout: post
 title:  "File Arranging in Machine-Learning Contest"
 date:   2017-06-21 08:00:00
 categories: ML
-permalink: /archivers/ML
+permalink: /archivers/2
 ---
 
 ![](/image/06-21.jpg)

@@ -3,7 +3,7 @@ layout: post
 title:  "Some Tips for Youngers"
 date:   2017-07-26 08:00
 categories: Normal
-permalink: /archivers/youngers
+permalink: /archivers/4
 ---
 
 ![](/image/newlife.jpg)

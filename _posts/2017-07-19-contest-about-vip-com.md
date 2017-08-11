@@ -3,7 +3,7 @@ layout: post
 title:  "Contest About vip.com"
 date:   2017-07-19 08:00
 categories: Contest
-permalink: /archivers/Contest
+permalink: /archivers/3
 ---
 
 ![](/image/contest.png)
