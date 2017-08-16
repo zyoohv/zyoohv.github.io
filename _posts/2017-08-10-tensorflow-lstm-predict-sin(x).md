@@ -8,7 +8,7 @@ permalink: /archivers/5
 
 ![](/image/tensorflow_lstm.png)
 
-Lstm nerual network is one kind of recurrent nerual network, and usually used to predict sequences such as NLP. So we use it to predict a function such as: sin(x) * k + b, and discussing what influence the accuraccy of lstm.
+Lstm nerual network is one kind of recurrent nerual network, and usually used to predict sequences such as language. So we use it to predict some functions such as: sin(x) * k + b, and discuss the factors that influence the accuraccy of lstm.
 
 <!--more-->
 
@@ -16,9 +16,9 @@ Lstm nerual network is one kind of recurrent nerual network, and usually used to
 
 ### base model
 
-We firstly generate dataset which `x = np.linspace(0, 20, 100)`, and use previous 30 values to predict the 31th value.
+We firstly generate datasets which `x = np.linspace(0, 20, 100)`, and use the first 30 values to predict the 31th one.
 
-We generate a toy dataset, it's really simple:
+The toy dataset is really simple:
 
 ```python
 def f(x_array):
@@ -42,11 +42,11 @@ config = {
 }
 ```
 
-But upseting, the too many layers and large learning_rate make it too difficult to learn much information. The prediction result is:
+But upseting, it's about too many layers and large learning_rate making it learning nothing. The prediction result is:
 
 ![](/image/base1.png)
 
-So we change the parameters above, than base model's parameters are:
+So we change the parameters above, so base model's parameters are:
 
 ```python
 config = {
@@ -65,7 +65,7 @@ And the base result is:
 
 ![](/image/base2.png)
 
-It seems better, but still don't achieve our goal. The following we will improve it by kinds of ways.
+It seems better, but still don't achieve our goal. we will improve it by kinds of ways in following.
 
 ### learning_rate
 
