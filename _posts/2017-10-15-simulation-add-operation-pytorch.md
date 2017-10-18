@@ -190,4 +190,4 @@ We get the expected result in this way:
 
 We use two custom linear layer to simulate add operation in this article. Firstly our network did not learn the right function, for our wrong loss function lead to wrong gradient to backward. We rectify it and get the right result.
 
-But to upset, we have no time to try more parameters and more model. However I still believe it will if we set the good enough parameters.
+But I am so sorry that we have no time to try more parameters and more models. However I still believe it will work if we set the good enough parameters.
