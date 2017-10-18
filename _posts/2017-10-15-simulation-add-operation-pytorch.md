@@ -185,3 +185,9 @@ We get the expected result in this way:
 ![6.3](/image/6.3.png)
 
 ![6.4](/image/6.4.png)
+
+## Conclude
+
+We use two custom linear layer to simulate add operation in this article. Firstly our network did not learn the right function, for our wrong loss function lead to wrong gradient to backward. We rectify it and get the right result.
+
+But to upset, we have no time to try more parameters and more model. However I still believe it will if we set the good enough parameters.

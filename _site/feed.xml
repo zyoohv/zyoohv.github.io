@@ -6,8 +6,8 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 18 Oct 2017 20:58:08 +0800</pubDate>
-    <lastBuildDate>Wed, 18 Oct 2017 20:58:08 +0800</lastBuildDate>
+    <pubDate>Wed, 18 Oct 2017 21:56:58 +0800</pubDate>
+    <lastBuildDate>Wed, 18 Oct 2017 21:56:58 +0800</lastBuildDate>
     <generator>Jekyll v3.6.0</generator>
     
       <item>
@@ -183,6 +183,12 @@ We split our codes into two source files: &lt;a href=&quot;#&quot;&gt;main.py&lt
 &lt;p&gt;&lt;img src=&quot;/image/6.3.png&quot; alt=&quot;6.3&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/image/6.4.png&quot; alt=&quot;6.4&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;conclude&quot;&gt;Conclude&lt;/h2&gt;
+
+&lt;p&gt;We use two custom linear layer to simulate add operation in this article. Firstly our network did not learn the right function, for our wrong loss function lead to wrong gradient to backward. We rectify it and get the right result.&lt;/p&gt;
+
+&lt;p&gt;But to upset, we have no time to try more parameters and more model. However I still believe it will if we set the good enough parameters.&lt;/p&gt;
 </description>
         <pubDate>Sun, 15 Oct 2017 08:00:00 +0800</pubDate>
         <link>http://localhost:4000/archivers/6</link>
