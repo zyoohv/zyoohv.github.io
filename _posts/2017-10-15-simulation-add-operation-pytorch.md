@@ -1,6 +1,5 @@
 ---
 layout: post
-comments: false
 title:  "Simulation add-operation with pytorch"
 date:   2017-10-15 08:00
 categories: ML
