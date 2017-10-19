@@ -12,7 +12,7 @@ We all know that the theory **Universal approximate theorem**, said that a linea
 
 <!--more-->
 
-But in this article, we will challenge this theory, at least with our simply function such as adding. On the way to train the model, we also overcome so many difficulties. Now let's begin our novel travel.
+But in this article, we will challenge this theory, at least with our simply function such as adding. On the way to the training of model, we also overcome so many difficulties. Now let's begin our novel travel.
 
 ## 1.Task
 
@@ -30,7 +30,7 @@ What we use is a famous dataset named **toy dataset**. All datas are generated r
 
 $$X = (x - 0.5) * L, x \in [0, 1)$$
 
-The L is a hyperparameter, and it makes our input number range from -L to L inclusive.
+The L is a hyperparameter, and it makes our input numbers range from -L to L inclusive.
 
 
 ## 3.Model
@@ -39,7 +39,7 @@ We suppose our input is a variable:
 
 $$input = [batchsize * n]$$
 
-in which the **batch_size** is the batch size of our input to decreasing the fluctuate in training stage. the **n** is the number we explain in sction 1.Task, the amount of numbers to add together. Than we send them into a linear network, and get a [batch_size * 1] variable finally. In every epoch, we split all datas into several batches that are sended into network to training one by one.
+in which the **batch_size** is the batch size of our input to decreasing the fluctuate in training stage. the **n** is the number we explain in sction 1.Task, the amount of numbers to add together. Than we send them into the linear network, and get a [batch_size * 1] variable finally. In every epoch, we split all datas into several batches that are sended into network to training one by one.
 
 
 For our goal is simulating a function in base linear layer, so our model is built by custom layers. In this way, we can add L1 normalization, L2 normalization and bias in our will. I believe we can know what happen indeed in this way. 
@@ -139,7 +139,7 @@ It obvious that our network not perform well as we expected! If there is someone
 
 ![6.2](/image/6.2.png)
 
-**Take care of the value of x axes and y axes. By comparing them, we can conclude our network dose not learn right add operation at all.**
+**Take care of the value of x axes and y axes. By comparing them, we can conclude that our network dose not learn right add operation at all.**
 
 So why?
 
@@ -157,7 +157,7 @@ Let's observe the code in our training phase:
             ...
 ```
 
-In fact, it's really strange that our code can run with no error! For our model, with (batch_size, n) of input, and (batch_size, 1) output. In other words, the shape of y in above code is (batch_size, 1). But the shape of label in above code is (batch_size, ). Now we change our code to:
+In fact, it's really strange that our code can run with no error! In our model, with (batch_size, n) of input, and (batch_size, 1) output. In other words, the shape of y in above code is (batch_size, 1). But the shape of label in above code is (batch_size, ). Now we change our code to:
 
 ```python
 for epoch in range(1, self.config['epoch'] + 1):
@@ -173,7 +173,7 @@ for epoch in range(1, self.config['epoch'] + 1):
 
         self.optimizer.zero_grad()
         y = self.model(x)
-        loss = torch.sum((y - label.t()) ** 2)
+        loss = torch.sum((y.t() - label) ** 2)
 
         total_loss += loss.data.numpy()[0]
         loss.backward()
