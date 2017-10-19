@@ -21,7 +21,7 @@ In this section, we will challenge it by simulate **add** function. In detail, w
 $$y = \sum_{i}^{n} x_{i}$$
 
 The n is the number of numbers to add together. In other words, the input's dimension is **batch_size * n**.
-We split our codes into two source files: [main.py](#), [model.py](#). click them to view the source codes.
+We split our codes into two source files: [main.py](https://github.com/zyoohv/zyoohv.github.io/blob/master/file/simulate-add/main.py), [model.py](https://github.com/zyoohv/zyoohv.github.io/blob/master/file/simulate-add/model.py). click them to view the source codes.
 
 
 ## 2.Dataset
