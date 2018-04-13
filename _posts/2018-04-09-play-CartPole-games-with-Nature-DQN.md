@@ -36,7 +36,7 @@ In which the $$Q(s_t, a_t)$$ is our state-action function, and the $$\alpha$$ is
 $$loss = \|R_{t + 1} + \gamma max\{Q(s_{t+1}, a))\} - Q(s_t, a_t)\|^2$$
 
 In this blog, we will adopt the **experience replay** and **target network** to make the performance of our method better. We will explain them in our code.
-if you want our full code, click [here](#)
+if you want our full code, click [here](https://github.com/zyoohv/zyoohv.github.io/blob/master/code_repository/DQN/Nature_DQN.py)
 
 ## 2 Our method
 
