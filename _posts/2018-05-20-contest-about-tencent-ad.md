@@ -42,7 +42,7 @@ We apply a two layer structure, but in fact we have no time to test the second s
 In detail, we train our model with 1 of 20 packages, and make prediction with the others 10 packages and the predtion feature matrix. When we apply the second method, we also train with our 20 packages, but the number of feature is 19 (20 - 1, because we do not make prediction itself in first step), and drop the correspond column in predtion feature matrix column.
 
 I think you must know what I means, hah...
-more information, visit code here: [github.com](https://github.com/zyoohv/zyoohv.github.io/blob/master/code_repository/tencent_ad_contest/model/)
+more information, visit code here: [github.com](https://github.com/zyoohv/zyoohv.github.io/tree/master/code_repository/tencent_ad_contest/tencent_contest/model)
 
 Some usefull model:
 

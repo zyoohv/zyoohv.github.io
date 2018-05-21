@@ -6,9 +6,85 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 21 May 2018 19:55:29 +0800</pubDate>
-    <lastBuildDate>Mon, 21 May 2018 19:55:29 +0800</lastBuildDate>
+    <pubDate>Mon, 21 May 2018 21:02:21 +0800</pubDate>
+    <lastBuildDate>Mon, 21 May 2018 21:02:21 +0800</lastBuildDate>
     <generator>Jekyll v3.7.3</generator>
+    
+      <item>
+        <title>Contest about Tencent Advertisement</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/image/8.1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I did some attempt to solve the problem. Thought they seems not work well, but I really want to write some methods that may will be used one day.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;1-arrange-dataset--extract-feature&quot;&gt;1. arrange dataset &amp;amp;&amp;amp; extract feature&lt;/h2&gt;
+
+&lt;p&gt;The given dataset is so large, about 4G. And at the same time, the number of negative samples are about 10 times to positive samples. So develop a method to arrange them is so important for use to save time and energy. We arrange them with:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;transform .data file to .csv file.&lt;/li&gt;
+  &lt;li&gt;assemble them to one big file.&lt;/li&gt;
+  &lt;li&gt;extract feature from the big file and save our feature to files.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Note that we must use nearly all samples to train our model, because it will make us score higher. So we devide all our dataset into about 20 pacakges. Each one contain all positice samples and the same number of negative samples.&lt;/p&gt;
+
+&lt;p&gt;We use &lt;code class=&quot;highlighter-rouge&quot;&gt;onehot&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;embedding&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;CountVectorizer&lt;/code&gt; method to convert our origin file to our train matrix. We extract some cross-feature to improve the result. The feature matrix are too big, so we save them in .npz(csr_matrix) format. The example code here:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-Python&quot;&gt;from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.preprocessing import OneHotEncoder
+from scipy.sparse import csr_matrix
+
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;2-build-model&quot;&gt;2. build model&lt;/h2&gt;
+
+&lt;p&gt;We apply a two layer structure, but in fact we have no time to test the second step for time limiting.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;we train our model with 20 train-prediction pair packages.&lt;/li&gt;
+  &lt;li&gt;we use the result of all 20 prediction result to train the other model.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In detail, we train our model with 1 of 20 packages, and make prediction with the others 10 packages and the predtion feature matrix. When we apply the second method, we also train with our 20 packages, but the number of feature is 19 (20 - 1, because we do not make prediction itself in first step), and drop the correspond column in predtion feature matrix column.&lt;/p&gt;
+
+&lt;p&gt;I think you must know what I means, hah…
+more information, visit code here: &lt;a href=&quot;https://github.com/zyoohv/zyoohv.github.io/tree/master/code_repository/tencent_ad_contest/tencent_contest/model&quot;&gt;github.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Some usefull model:&lt;/p&gt;
+
+&lt;p&gt;deepFM: &lt;a href=&quot;https://github.com/ChenglongChen/tensorflow-DeepFM&quot;&gt;https://github.com/ChenglongChen/tensorflow-DeepFM&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;xlearn: &lt;a href=&quot;https://github.com/aksnzhy/xlearn&quot;&gt;https://github.com/aksnzhy/xlearn&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;3-turn-parameters&quot;&gt;3. turn parameters&lt;/h2&gt;
+
+&lt;p&gt;The detail look up our source file please. We give some methodes to turn them:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Use small dataset, big learning rate(0.1), small iterator_num to speed up.&lt;/li&gt;
+  &lt;li&gt;Too large iterator_num may cause over fitting, and too small iterator_num may can not score high. So we’d better set a valid dataset and earyl_stoping.&lt;/li&gt;
+  &lt;li&gt;CV is not dependable.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;4-note&quot;&gt;4. note&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The processing of the dataset waste too much time. I should use a more faster method, or just use the part dataset to test the result.&lt;/li&gt;
+  &lt;li&gt;I should always store the middle result. It means that if my code report error in last line code, I do not need run them all again.&lt;/li&gt;
+  &lt;li&gt;Extimate the runing time, if avaiable, run them in serveral computer.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Sun, 20 May 2018 08:00:00 +0800</pubDate>
+        <link>http://localhost:4000/archivers/8</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/8</guid>
+        
+        
+        <category>ML</category>
+        
+      </item>
     
       <item>
         <title>Play CartPole game with Nature-DQN</title>
